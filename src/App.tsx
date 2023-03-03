@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Routes, Route, Outlet } from "react-router-dom";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/footer";
 
-function App() {
+import Login from "./routes/login";
+import NotFound from "./routes/notFound";
+import Home from "./routes/homepage";
+import BurgerMaker from "./routes/burgerMaker";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="make-a-burger" element={<BurgerMaker />} />
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </>
+  );
+}
+
+const Layout = () => {
+  return (
+    <>
+      <Header />
+
+      <Outlet />
+
+      <Footer />
+    </>
   );
 }
 
