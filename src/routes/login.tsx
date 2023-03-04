@@ -7,9 +7,8 @@ const Login = () => {
     <div>
       <Heading element="h1">Get them while they'hot!</Heading>
 
-      <LoginForm />
+      {/* <LoginForm /> */}
     </div>
-  );
-};
-
+  )
+}
 export default Login;

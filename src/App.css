@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+:root {
+  --primary: #C8CBD5;
+  --black: #222;
+  --gradientStart: #4ca1af;
+  --gradientEnd: #c4e0e5;
+  --hoverColor: #4ca1af;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  width:min(1240px, 100%);
+  padding: 0 24px;
+  margin:0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
 }
 
-.App-header {
-  background-color: #282c34;
+.flex{
+  display:flex;
+}
+
+.flex-col{
+  flex-direction:column;
+}
+
+.flex-col-reverse{
+  flex-direction:column-reverse;
+}
+
+.items-center{
+  align-items:center;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.page{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.mr-auto{
+  margin-right:auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mb-16{
+  margin-bottom:16px;
+}
+
+.mt-48{
+  margin-top:48px;
+}
+
+.mt-0{
+  margin-top:0;
+} 
+
+.mb-8{
+  margin-bottom:8px;
+}
+
+.button{
+    font-size: 1.1rem;
+    text-decoration:none;
+    font-family:inherit;
+    font-weight:500;
+    letter-spacing:0.3px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(214, 35, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    display:inline-block;
+    padding: 0.5rem 3rem;
+    border:2px solid transparent;
+    transition:border-color 360ms ease;
+    will-change:border-color;
+}
+
+.button:hover{
+  border-color: #fff;  
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+}
+
+input[type="text"],
+input[type="password"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #6b7280;
+  border-width: 1px;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+}
+
+.bg-white{
+  background-color:#fff;
+} 
+
+.rounded-lg {
+  border-radius:25px;
+}
+
+.p-24{
+  padding:24px;
 }

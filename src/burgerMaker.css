@@ -1,0 +1,94 @@
+.burger{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+}
+.burger__ingredient-list{
+    flex-basis: 40%;
+    min-width:40%;
+    cursor:pointer;
+}
+
+
+.burger__ingredient-list li{
+    display:flex;
+    margin-bottom: 8px;
+    position:relative;
+}
+
+.burger__ingredient-list span{
+    padding:5px 0;
+    font-size:1.2rem;
+    font-weight:700;
+    position:relative;
+    z-index:1;
+    text-align: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(
+        to right,
+        var(--hoverColor),
+        var(--hoverColor) 50%,
+        black 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.burger__ingredient-list span:before{
+    display:block;
+    content:'';
+    width:0;
+    height:1px;
+    bottom:5px;
+    left:0;
+    bottom:-1px;
+    z-index:0;
+    position:absolute;
+    background:var(--hoverColor);
+    transition: all 0.3s ease-in-out;
+}
+.burger__ingredient-list span:hover{
+    background-position: 0%;
+}
+
+.burger__ingredient-list span:hover:before{
+    width:100%;
+}
+
+.burger__ingredients li{
+    margin-top:-60px;
+    position:relative;
+    cursor:pointer;
+    background-color:transparent;
+    will-change:background-color;
+    transition:background-color 300ms ease;
+}
+
+.burger__ingredients li:hover{
+    background-color:rgba(183,93,109,0.5);
+    cursor:no-drop;
+}
+
+.burger__composition__top-bun{
+    position:relative;
+    z-index:1;
+    margin-bottom: 25px;
+}
+
+.burger__composition__bottom-bun{
+    margin-top: -60px;
+}
+
+
+.burger__composition {
+    flex-basis: calc(60% - 24px);
+    min-width:40%;
+}
+
+.note{
+    margin: 16px 0 48px;
+    font-size:0.9rem;
+    font-weight:500;
+}

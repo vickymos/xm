@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik } from "formik";
+import { redirect } from "react-router-dom";
 
 const LoginForm = () => {
-  const [apiResponse, setAPiResponse] = useState(null);
+  const [apiResponse, setAPiResponse] = useState({});
+  const [apiData, setAPiData] = useState(null);
+
+  useEffect(() => {
+
+    console.log("response s", apiResponse);
+    console.log("response s", apiData);
+}, [apiResponse]);
+
+
+
   const loginRequest = async (values: any, setSubmitting: any) => {
-
     let bodyRaw = {
-      "name": values?.name,
-      "password": values?.password,
+      name: values?.name,
+      password: values?.password,
     };
-
 
     const requestOptions = {
       method: "POST",
@@ -24,23 +33,26 @@ const LoginForm = () => {
       requestOptions
     )
       .then((response) => {
+        setAPiResponse(response);
         return response.json();
       })
       .then((data) => {
-        setAPiResponse(data);
-
-        console.log("response",apiResponse);
-
+        
+        setAPiData(data);
       })
       .catch(function (error) {
         console.log(error);
       });
+
+
+    redirect("/make-a-burger");
   };
 
   const MyForm = (props: any) => {
     const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
       props;
 
+      
     return (
       <>
         <form onSubmit={handleSubmit}>
@@ -80,15 +92,11 @@ const LoginForm = () => {
     displayName: "BasicForm",
   })(MyForm);
 
-
-
   return (
-
     <>
-    <TheLoginForm />
-</>
-  )
-
+      <TheLoginForm />
+    </>
+  );
 };
 
 export default LoginForm;
