@@ -56,12 +56,20 @@ ul{
   margin-top:48px;
 }
 
+.mb-48{
+  margin-bottom:48px;
+}
+
 .mt-0{
   margin-top:0;
 } 
 
 .mb-8{
   margin-bottom:8px;
+}
+
+img{
+  max-width:100%;
 }
 
 .button{
@@ -82,7 +90,11 @@ ul{
     will-change:border-color;
 }
 
-.button:hover{
+.button[disabled]{
+  opacity: 0.4;
+}
+
+.button:not([disabled]):hover{
   border-color: #fff;  
 }
 
@@ -116,4 +128,16 @@ input[type="password"]{
 
 .p-24{
   padding:24px;
+}
+
+.font-medium{
+  font-weight:500;
+}
+
+.h1{
+  font-size: clamp(1.6rem, 2.5vw, 4.2rem); 
+}
+
+.h2{
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem); 
 }

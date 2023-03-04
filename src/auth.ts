@@ -28,7 +28,7 @@ const authProvider = {
       .then((data) => {
         authProvider.isAuthenticated = true;
         callback();
-        console.log(data);
+
         localStorage.setItem('xmTokenLocalKey', JSON.stringify(data));
       })
       .catch(function (error) {

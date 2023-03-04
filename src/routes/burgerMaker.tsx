@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { endpoints } from "../config";
 import "../burgerMaker.css";
 import { Heading } from "../components/tags/heading";
+import { useNavigate } from 'react-router-dom';
 
 const BurgerMaker = () => {
+
   const xmToken: XmToken =
     typeof window !== "undefined"
       ? JSON.parse(localStorage.getItem("xmTokenLocalKey")!) || {}
       : {};
-  console.log("the token", xmToken);
 
-  const [burgerData, setBurgerData] = useState<null | any>(null);
 
-  const [selectedIngredients, setSelectedIngredients] = useState<
-    burgerDataProps[]
-  >(() => {
+  const [burgerData, setBurgerData] = useState<burgerDataProps[]>([]);
+
+  const [selectedIngredients, setSelectedIngredients] = useState<burgerDataProps[]>(() => {
     if (typeof window !== "undefined")
       return (
         JSON.parse(localStorage.getItem("selectedIngredientsLocalKey")!) || []
@@ -26,14 +26,19 @@ const BurgerMaker = () => {
     token: Number;
   }
 
+  const token = xmToken?.token;
+  console.log("the token", token);
+
+  let navigate = useNavigate();
   useEffect(() => {
+    
     const getBurgerData = async () => {
 
       const requestOptions = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${xmToken?.token}`,
+          Authorization: `Bearer ${token}`,
         },
       };
 
@@ -41,13 +46,18 @@ const BurgerMaker = () => {
         endpoints.ingredients,
         requestOptions
       );
-
-      const burgerDataCollection: burgerDataProps = await burgerDataFetched.json();
-      setBurgerData(burgerDataCollection);
+      
+      if (burgerDataFetched.status !== 200) {
+        navigate('/login')
+      }
+      else {
+        const burgerDataCollection: burgerDataProps[] = await burgerDataFetched.json();
+        setBurgerData(burgerDataCollection);  
+      }      
 
     };
     getBurgerData();
-  }, []);
+  }, [token, navigate]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -89,15 +99,15 @@ const BurgerMaker = () => {
   return (
     <>
 
-      <Heading element="h1" className="mt-0 mb-8">
+      <Heading element="h1" className="mt-0 mb-8 h1">
         Let's make a delicious burger
       </Heading>
 
-      <Heading element="h2" className="">
+      <Heading element="h2" className="mt-0 mb-8 h2 font-medium">
         Pick your favourite ingredients from the list to get started
       </Heading>
 
-      <div className="burger mt-48">
+      <div className="burger mt-48 mb-48">
         {!ingredients ? null : (
           <ul className="burger__ingredient-list bg-white p-24 rounded-lg">
             {ingredients.map((ingredient, index) => {
@@ -114,9 +124,11 @@ const BurgerMaker = () => {
 
         {(selectedIngredients && ingredients) ? (
           <ul className="burger__composition flex flex-col items-center bg-white p-24 rounded-lg">
+            
             <li className="burger__composition__top-bun">
               <img src={`${endpoints.image}bun_top.png`} alt={`top bun`} />
             </li>
+
             <li>
               <ul className="burger__ingredients flex flex-col-reverse">
                 {selectedIngredients.map((ingredient, index) => {
@@ -125,26 +137,31 @@ const BurgerMaker = () => {
                       <img
                         src={`${endpoints.image}${ingredient.src}`}
                         alt={`${ingredient?.name}`}
+                        title="click to remove"
                       />
                     </li>
                   );
                 })}
               </ul>
             </li>
+
             <li className="burger__composition__bottom-bun">
-              <img
-                src={`${endpoints.image}bun_bottom.png`}
-                alt={`bottom bun`}
+              <img src={`${endpoints.image}bun_bottom.png`} alt={`bottom bun`}
               />
             </li>
+
           </ul>
 
 
         ) : null}
 
         <div className="note">
-          {(selectedIngredients.length < 7) ? null : `Ok, you might be overdoing it now`}
+          {(selectedIngredients && selectedIngredients.length < 7) ? null : `Ok, you might be overdoing it now`}
         </div>
+
+        <button type="submit" className="button button--ghost" disabled={(selectedIngredients && selectedIngredients.length === 0) ? true: false}>
+            Proceed to checkout
+        </button>
 
       </div>
 

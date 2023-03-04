@@ -119,7 +119,7 @@ const LoginPage = () => {
 
   return (
     <div className="bg-white rounded-lg p-24 mt-48 login">
-      <p>You must log in to view the page at {from}</p>
+      <p>Welcome! Log in so we can start making burgers</p>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-16">
