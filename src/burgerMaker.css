@@ -41,7 +41,7 @@
     background-size: 200% 100%;
     background-position: -100%;
     transition: all 0.3s ease-in-out;
-    
+    text-transform:capitalize;
 }
 
 .burger__ingredient-list span:before{

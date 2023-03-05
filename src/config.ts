@@ -1,6 +1,8 @@
+const base = "https://xm-crm-react-exercise-server.herokuapp.com/";
+
 export const endpoints = {
-	login: "https://xm-crm-react-exercise-server.herokuapp.com/login",
-	ingredients: "https://xm-crm-react-exercise-server.herokuapp.com/ingredients",
-	image: "https://xm-crm-react-exercise-server.herokuapp.com/img/",
+	login: `${base}login`,
+	ingredients: `${base}ingredients`,
+	image: `${base}img/`
 };
   

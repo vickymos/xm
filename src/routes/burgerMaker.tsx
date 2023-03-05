@@ -45,9 +45,10 @@ const BurgerMaker = () => {
                 user(possibly) has no longer a valid token
                 will redirect to login page
                 and remove the stored token 
-                 */
+                */
 
                 navigate('/login');
+
                 if (typeof window !== "undefined")
                     window.localStorage.removeItem("xmTokenLocalKey");
             }
@@ -143,7 +144,6 @@ const BurgerMaker = () => {
                         </li>
 
                     </ul>
-
 
                 ) : null}
 
