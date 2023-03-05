@@ -12,7 +12,7 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         let formData = new FormData(event.currentTarget);
@@ -28,7 +28,9 @@ const Login = () => {
         <div className="bg-white rounded-lg p-24 mb-48 login">
 
             <Heading element="h1" className="mt-0 mb-16 h2">
-                Welcome!<br /> Log in so we can start making burgers
+                Welcome!
+                <br /> 
+                Log in so we can start making burgers
             </Heading>
 
             <form onSubmit={handleSubmit}>
