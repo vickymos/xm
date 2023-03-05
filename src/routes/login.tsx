@@ -1,5 +1,3 @@
-import * as React from "react";
-import LoginForm from "../components/form/loginForm";
 import { Heading } from "../components/tags/heading";
 
 const Login = () => {
@@ -7,7 +5,7 @@ const Login = () => {
     <div>
       <Heading element="h1">Get them while they'hot!</Heading>
 
-      {/* <LoginForm /> */}
+
     </div>
   )
 }

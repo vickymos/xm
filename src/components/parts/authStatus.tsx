@@ -13,7 +13,6 @@ const AuthStatus = () => {
         if (typeof window !== "undefined")
             window.localStorage.removeItem("xmTokenLocalKey");
     }
-
     
 	const xmToken: XmToken = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("xmTokenLocalKey")!) || {} : {};
 	
@@ -34,7 +33,7 @@ const AuthStatus = () => {
     return (
         <div className="auth-actions">
 
-            <div className="mb-16">Welcome {auth.user}!{" "}</div>
+            <div className="mb-16">Welcome {auth.user}!{""}</div>
 
             <button className="button button--primary" onClick={() => { handleSignout() }}>
                 Sign out

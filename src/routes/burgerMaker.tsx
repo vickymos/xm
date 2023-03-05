@@ -76,29 +76,21 @@ const BurgerMaker = () => {
     const ingredients: burgerDataProps[] = burgerData;
 
     const handleAddition = (ingredient: burgerDataProps) => {
-        setSelectedIngredients((selectedIngredients) => [
-            ...selectedIngredients,
-            ingredient,
-        ]);
-        console.log("cl", selectedIngredients);
+        setSelectedIngredients((selectedIngredients) => [...selectedIngredients, ingredient]);
     };
 
     const handleRemoval = (ingredient: burgerDataProps, index: number) => {
-        setSelectedIngredients((selectedIngredients) => [
-            ...selectedIngredients,
-            ingredient,
-        ]);
+        setSelectedIngredients((selectedIngredients) => [...selectedIngredients, ingredient]);
 
         const updatedIngredients = [...selectedIngredients];
 
-        updatedIngredients.splice(index, 1)
-        setSelectedIngredients(updatedIngredients);
+        updatedIngredients.splice(index, 1);
 
+        setSelectedIngredients(updatedIngredients);
     };
 
     return (
         <>
-
             <Heading element="h1" className="mt-0 mb-8 h1">
                 Let's make a delicious burger
             </Heading>
@@ -159,7 +151,7 @@ const BurgerMaker = () => {
                     {(selectedIngredients && selectedIngredients.length < 7) ? null : `Ok, you might be overdoing it now`}
                 </div>
 
-                <button type="submit" className="button button--ghost" disabled={(selectedIngredients && selectedIngredients.length === 0) ? true : false}>
+                <button type="submit" className="button button--primary" disabled={(selectedIngredients && selectedIngredients.length === 0) ? true : false}>
                     Proceed to checkout
                 </button>
 
