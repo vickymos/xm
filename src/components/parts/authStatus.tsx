@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
     useNavigate,
     Link
@@ -21,16 +20,13 @@ const AuthStatus = () => {
 
     return (
         <div className="auth-actions">
-            
+
             <div className="mb-16">Welcome {auth.user}!{" "}</div>
-            <button className="button button--primary"
-                onClick={() => {
-                    auth.signout(() => navigate("/"));
-                }}
-            >
+            
+            <button className="button button--primary" onClick={() => { auth.signout(() => navigate("/")); }}>
                 Sign out
             </button>
-            
+
         </div>
     );
 };
