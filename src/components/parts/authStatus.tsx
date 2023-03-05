@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../../App";
+import { useAuth, XmToken } from "../../App";
 import "./authStatus.css";
 
 const AuthStatus = () => {
@@ -14,7 +14,12 @@ const AuthStatus = () => {
             window.localStorage.removeItem("xmTokenLocalKey");
     }
 
-    if (!auth.user) {
+    
+	const xmToken: XmToken = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("xmTokenLocalKey")!) || {} : {};
+	
+	const token = xmToken?.token;
+
+    if (token === undefined && !auth.user) {
         return (
             <div className="auth-actions">
 
