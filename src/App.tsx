@@ -15,6 +15,7 @@ import Homepage from "./routes/homepage";
 import { Heading } from "./components/tags/heading";
 import "./App.css";
 import NotFound from "./routes/notFound";
+import Input from "./components/form/input";
 
 export default function App() {
 	return (
@@ -38,7 +39,7 @@ export default function App() {
 	);
 }
 
-function Layout() {
+const Layout = () => {
 	return (
 		<div className="page">
 			<Header />
@@ -141,14 +142,16 @@ const LoginPage = () => {
 					<label>
 						Your Name:
 					</label>
-					<input name="username" type="text" />
+
+					<Input id="username" name="username" type="text" />
 				</div>
 
 				<div className="mb-16">
 					<label>
 						Your Password:
 					</label>
-					<input name="password" type="password" />
+
+					<Input id="password" name="password" type="password" />					
 				</div>
 
 				<button type="submit" className="button button--primary">Login</button>

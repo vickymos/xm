@@ -33,7 +33,7 @@ const AuthStatus = () => {
     return (
         <div className="auth-actions">
 
-            <div className="mb-16">Welcome {auth.user}!{""}</div>
+            <div className="mb-8">Welcome {auth.user}!{""}</div>
 
             <button className="button button--primary" onClick={() => { handleSignout() }}>
                 Sign out
