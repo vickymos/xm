@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import SplashImage from "../images/burger-1920-min.jpeg";
+import SplashImage2x from "../images/burger-1920.jpeg";
+import SplashImage from "../images/burger-1200.jpg";
+import SplashImageMobile from "../images/burger-600.jpg";
+import SplashImageMobile2x from "../images/burger-1000.jpg";
 
 const Homepage = () => {
     return (
@@ -29,7 +32,8 @@ const Homepage = () => {
                 <div className="flex flex-col items-center bg-white rounded-lg relative shadow relative">
 
                     <picture className="">
-                        <source media="(min-width: 766px)" srcSet={`${SplashImage}, ${SplashImage} 2x`} />
+                        <source media="(min-width: 600px)" srcSet={`${SplashImage}, ${SplashImage2x} 2x`} />
+                        <source srcSet={`${SplashImageMobile}, ${SplashImageMobile2x} 2x`} />
                         <img src={`${SplashImage}`} alt="Burger Inc. Logo" width="1920" height="1278" className="rounded-lg shadow promo__image" />
                     </picture>
 
