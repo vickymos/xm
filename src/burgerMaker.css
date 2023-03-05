@@ -1,8 +1,17 @@
 .burger{
     display: grid;
-    grid-template-columns:repeat(auto-fit, minmax(390px, 1fr));
+    grid-template-columns:1fr;
     gap: 24px;
 }
+
+@media (min-width: 850px) {
+
+    .burger{
+        grid-template-columns:repeat(auto-fit, minmax(390px, 1fr));
+    }
+
+}
+
 .burger__ingredient-list{
     flex-basis: 40%;
     min-width:40%;
@@ -49,7 +58,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-@media (min-width: 1270px) {
+@media (min-width: 1025px) {
     
     .burger__ingredient-list span:hover{
         background-position: 0%;
@@ -67,7 +76,7 @@
 }
 
 .burger__ingredients li{
-    margin-top:-60px;
+    margin-top:-30px;
     position:relative;
     cursor:pointer;
     background-color:transparent;
@@ -83,9 +92,18 @@
 }
 
 .burger__composition__bottom-bun{
-    margin-top: -60px;
+    margin-top: -30px;
 }
 
+
+@media (min-width: 520px) {
+
+    .burger__composition__bottom-bun,
+    .burger__ingredients li{
+        margin-top: -60px;
+    }    
+
+}
 
 .burger__composition {
     flex-basis: calc(60% - 24px);

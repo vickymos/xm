@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import AuthStatus from "../parts/authStatus";
 
 const HeaderWrapper = styled.header`
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   background: linear-gradient(to right, var(--gradientStart) 0%, var(--gradientEnd) 100%);
   align-items: center;
   display:flex;
@@ -21,33 +21,28 @@ const NavList = styled.ul`
 
 const Header = () => {
 
-  return (
-    <HeaderWrapper>
+    return (
+        <HeaderWrapper>
 
-      <div className="container flex items-center justify-between">
-        <img src={logo}
-          alt="Burger Inc. Logo"
-          loading="eager"
-          width="70"
-          height="70"
-        />
+            <div className="container flex items-center justify-between">
 
-        <nav className="mr-auto">
-          <NavList>
-            <li>
-              <Link to="/">Home Page</Link>
-            </li>
-            <li>
-              <Link to="/make-a-burger">Make a burger</Link>
-            </li>
-          </NavList>
-        </nav>
+                <Link to="/">
+                    <img src={logo} alt="Burger Inc. Logo" loading="eager" width="60" height="60" />
+                </Link>
 
-        <AuthStatus />
+                <nav className="mr-auto">
+                    <NavList>
+                        <li>
+                            <Link to="/make-a-burger" className="nav-link">Make a burger</Link>
+                        </li>
+                    </NavList>
+                </nav>
 
-      </div>
-    </HeaderWrapper>
-  );
+                <AuthStatus />
+
+            </div>
+        </HeaderWrapper>
+    );
 };
 
 export default Header;

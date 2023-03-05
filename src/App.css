@@ -18,6 +18,19 @@ ul{
   margin:0;
 }
 
+.nav-link{
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color .25s ease;
+  will-change: text-decoration-color;
+  color: var(--black);
+  line-height:1;
+}
+
+.nav-link:hover {
+  text-decoration-color: inherit;
+}
+
 .flex{
   display:flex;
 }
@@ -87,18 +100,17 @@ img{
 }
 
 .button{
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     text-decoration:none;
     font-family:inherit;
     font-weight:500;
     letter-spacing:0.3px;
     text-align: center;
-
+    line-height:1;
     border-radius: 8px;
     cursor: pointer;
     display:inline-block;
-    padding: 0.5rem 3rem;
-
+    padding: 0.5rem 2rem;
 }
 
 .button--primary{
