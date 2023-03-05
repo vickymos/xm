@@ -3,6 +3,7 @@ import { endpoints } from "../config";
 import "../burgerMaker.css";
 import { Heading } from "../components/tags/heading";
 import { useNavigate } from 'react-router-dom';
+import { XmToken } from "../App";
 
 const BurgerMaker = () => {
 
@@ -18,12 +19,7 @@ const BurgerMaker = () => {
         else return {};
     });
 
-    interface XmToken {
-        token: Number;
-    }
-
     const token = xmToken?.token;
-    console.log("the token", token);
 
     let navigate = useNavigate();
 
@@ -45,7 +41,15 @@ const BurgerMaker = () => {
             );
 
             if (burgerDataFetched.status !== 200) {
-                navigate('/login')
+                /**
+                user(possibly) has no longer a valid token
+                will redirect to login page
+                and remove the stored token 
+                 */
+
+                navigate('/login');
+                if (typeof window !== "undefined")
+                    window.localStorage.removeItem("xmTokenLocalKey");
             }
             else {
                 const burgerDataCollection: burgerDataProps[] = await burgerDataFetched.json();

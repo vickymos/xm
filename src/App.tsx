@@ -63,7 +63,6 @@ let AuthContext = React.createContext<AuthContextType>(null!);
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 	let [user, setUser] = useState<any>(null);
 
-
 	let signin = (newUser: string, password: string, callback: VoidFunction) => {
 
 		return authProvider.signin(newUser, password, () => {
@@ -88,11 +87,22 @@ export const useAuth = () => {
 	return React.useContext(AuthContext);
 };
 
+export interface XmToken {
+	token: Number;
+}
+
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
 	let auth = useAuth();
 	let location = useLocation();
 
-	if (!auth.user) {
+	const xmToken: XmToken = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("xmTokenLocalKey")!) || {} : {};
+	/**
+	 * using stored token if there is one
+	 * otherwise redirecting to login page
+	*/
+	const token = xmToken?.token;
+
+	if (token === undefined && !auth.user) {
 		return <Navigate to="/login" state={{ from: location }} replace />;
 	}
 
